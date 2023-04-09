@@ -1,10 +1,23 @@
 import User from "../model/User.js";
+import Blog from "../model/Blog.js";
 import bcrypt from "bcryptjs";
 
 export const getAllUser = async (req, res, next) => {
   let users;
   try {
-    users = await User.find();
+    // users = await User.find();
+    users = await User.aggregate([
+      { $lookup:
+          {
+             from: "blogs",
+             localField: "_id",
+             foreignField: "user",
+             as: "blogs"
+
+          }
+      }
+  ]);
+  console.log(users);
   } catch (err) {
     return console.log(err);
   }
@@ -68,3 +81,4 @@ export const signIn = async (req, res, next) => {
     .status(200)
     .json({ message: "Login Successful!!!", user: existingUser });
 };
+

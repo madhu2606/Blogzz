@@ -20,6 +20,10 @@ const blogSchema = new Schema({
     ref: "User",
     required: true,
   },
+  isApproved:{
+    type: Boolean,
+    required: true,
+  }
 });
 
 export default mongoose.model("Blog", blogSchema);

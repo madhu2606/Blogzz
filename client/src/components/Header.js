@@ -15,6 +15,8 @@ import { authActions } from "../store";
 function Header() {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.isLoggedIn);
+  const isAdmin = useSelector((state) => state.admin);
+  console.log(isAdmin);
   const username = useSelector((state) => state.username);
   const [value, setValue] = useState();
   return (
@@ -38,15 +40,31 @@ background: "linear-gradient(71deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 10
         </Typography>
         {isLoggedIn && (
           <Box display="flex" marginLeft={"auto"}>
+             {!isAdmin  ? 
             <Tabs
               textColor="inherit"
               value={value}
               onChange={(event, val) => setValue(val)}
             >
+         
               <Tab LinkComponent={Link} to="/" label="All Blogs" />
               <Tab LinkComponent={Link} to="/myBlogs" label="My Blogs " />
               <Tab LinkComponent={Link} to="/blogs/add" label="Create Blogs " />
             </Tabs>
+              :''
+              }
+             
+              {isAdmin  ? 
+                <Tabs
+              textColor="inherit"
+              value={value}
+              onChange={(event, val) => setValue(val)}
+            >
+             <Tab LinkComponent={Link} to="/" label="All Blogs" />
+              <Tab LinkComponent={Link} to="/users" label="Users " />
+              <Tab LinkComponent={Link} to="/unaproved" label="Requests " />  </Tabs>:''
+             
+              }
           </Box>
         )}
         <Box display="flex" marginLeft="auto">
@@ -84,6 +102,7 @@ background: "linear-gradient(71deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 10
             </Button>
             </div>
           )}
+         
         </Box>
       </Toolbar>
     </AppBar>

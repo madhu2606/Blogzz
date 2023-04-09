@@ -21,7 +21,7 @@ export const getAllBlogs = async (req, res, next) => {
 
 export const addBlog = async (req, res, next) => {
   const { title, content, image, user } = req.body;
-
+let isApproved = 0;
   let existingUser;
   try {
     existingUser = await User.findById(user);
@@ -38,6 +38,7 @@ export const addBlog = async (req, res, next) => {
     content,
     image,
     user,
+    isApproved
   });
 
   try {
@@ -69,6 +70,25 @@ export const updateBlog = async (req, res, next) => {
       title,
       content,
       image,
+    });
+  } catch (error) {
+    return console.log(error);
+  }
+  if (!blog) {
+    return res.status(500).json({ message: "Unable to update Blog" });
+  }
+  return res.status(200).json({ blog });
+};
+
+export const updateBlogAproval = async (req, res, next) => {
+
+
+  const blogId = req.params.id;
+ 
+  let blog;
+  try {
+    blog = await Blog.findByIdAndUpdate(blogId, {
+     "isApproved":true
     });
   } catch (error) {
     return console.log(error);

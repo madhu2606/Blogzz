@@ -16,6 +16,11 @@ const userSchema = new Schema({
     type: String,
     required: true,
     minlength: 6,
+  },
+  isAdmin:{
+    type:Boolean,
+    required:true,
+    default:false
   }
   
 });

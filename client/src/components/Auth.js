@@ -40,7 +40,7 @@ const Auth = () => {
     event.preventDefault();
     if (isSignup) {
       sendRequest("signup")
-        .then((data) => {localStorage.setItem("userId", data.user._id);localStorage.setItem("username", data.user.name)})
+        .then((data) => {localStorage.setItem("isAdmin", data.user.isAdmin);localStorage.setItem("userId", data.user._id);localStorage.setItem("username", data.user.name)})
         .then(() => {
           dispatch(authActions.signin());
         })
@@ -50,7 +50,7 @@ const Auth = () => {
         .then((data) => console.log(data));
     } else {
       sendRequest()
-        .then((data) => {console.log(data);localStorage.setItem("userId", data.user._id);localStorage.setItem("username", data.user.name)})
+        .then((data) => {console.log(data);localStorage.setItem("isAdmin", data.user.isAdmin);localStorage.setItem("userId", data.user._id);localStorage.setItem("username", data.user.name)})
         .then(() => {
           dispatch(authActions.signin());
         })

@@ -5,6 +5,7 @@ import { Grid } from "@mui/material";
 
 function Blogs() {
   const [blogs, setBlogs] = useState();
+
   const sendRequest = async () => {
     const res = await axios
       .get("http://localhost:8000/api/blog")
@@ -19,11 +20,12 @@ function Blogs() {
   }, []);
  
   return (
-    <Grid container spacing={2}>
-          <Grid item xs={12}>
-          <Grid container justifyContent="center" spacing={2}>
-      {blogs &&
+    <Grid container >
+      {blogs && 
         blogs.map((blog, index) => (
+blog.isApproved && (
+          <Grid item sm={4}>
+          <Grid container justifyContent="center" >
           <Blog
             id={blog._id}
             isUser={localStorage.getItem("userId") === blog.user._id}
@@ -31,11 +33,15 @@ function Blogs() {
             content={blog.content}
             image={blog.image}
             userName={blog.user.name}
+            isApproved = {blog.isApproved}
+
 
           />
-        ))}
           </Grid>
     </Grid>
+)
+        ))}
+
     </Grid>
   );
 }
