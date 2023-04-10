@@ -50,6 +50,7 @@ background: "linear-gradient(71deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 10
               <Tab LinkComponent={Link} to="/" label="All Blogs" />
               <Tab LinkComponent={Link} to="/myBlogs" label="My Blogs " />
               <Tab LinkComponent={Link} to="/blogs/add" label="Create Blogs " />
+              <Tab LinkComponent={Link} to="/about" label="About " />
             </Tabs>
               :''
               }
@@ -62,7 +63,8 @@ background: "linear-gradient(71deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 10
             >
              <Tab LinkComponent={Link} to="/" label="All Blogs" />
               <Tab LinkComponent={Link} to="/users" label="Users " />
-              <Tab LinkComponent={Link} to="/unaproved" label="Requests " />  </Tabs>:''
+              <Tab LinkComponent={Link} to="/unaproved" label="Requests " />
+              <Tab LinkComponent={Link} to="/about" label="About " />  </Tabs>:''
              
               }
           </Box>

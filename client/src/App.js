@@ -12,6 +12,7 @@ import { Route, Routes } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "./store";
 import UnApproved from "./components/Unaproved";
+import About from "./components/About";
 
 function App() {
   const dispatch = useDispatch();
@@ -33,6 +34,7 @@ function App() {
             <>
               <Route path="/auth" element={<Auth />} />
               <Route path="/" element={<Blogs />} />
+              <Route path="/about" element={<About />} />
             </>
           ) : (
             <>
@@ -42,6 +44,7 @@ function App() {
               <Route path="/myBlogs/:id" element={<BlogDetail />} />
               <Route path="/users" element={<Users />} />
               <Route path="/unaproved" element={<UnApproved />} />
+              <Route path="/about" element={<About />} />
             </>
           )}
         </Routes>

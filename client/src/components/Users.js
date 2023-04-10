@@ -8,15 +8,8 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import {
  Card,
- Avatar,
- CardContent,
- CardHeader,
- Typography,
- CardMedia,
- Box,
- IconButton,
- Paper,
- Grid,
+ CardContent
+
 } from "@mui/material";
 
 function Users() {
